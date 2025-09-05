@@ -1,0 +1,38 @@
+name: Applitools Github Integration Demo
+
+on:
+  push:
+  workflow_dispatch: # manual on demand
+
+jobs:
+  cypress-run:
+    name: Run Cypress E2E Tests with Applitools
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set local timezone to EST
+        run: timedatectl && sudo timedatectl set-timezone EST && timedatectl
+
+      - name: Run Cypress tests with Applitools
+        uses: cypress-io/github-action@v6
+        env:
+          APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+        with:
+          build: npm install
+          browser: chrome
+          command: npm run cy:test
+
+      - name: Upload Cypress videos and screenshots
+        if: '!cancelled()'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/results
+            cypress/reports
