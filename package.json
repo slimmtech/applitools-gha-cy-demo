@@ -15,7 +15,10 @@
     "report:xml:merge": "jrm cypress/results/test-results.xml 'cypress/results/xml/*.xml'",
     "report:generate": "marge cypress/results/test-results.json -o cypress/reports/html",
     "postcy:run": "npm run report:json:merge && npm run report:xml:merge && npm run report:generate",
-    "cy:test": "npm run cy:run || npm run postcy:run"
+    "cy:test": "npm run cy:run || npm run postcy:run",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -26,12 +29,23 @@
   },
   "homepage": "https://github.com/trabulmonkee/gha-cy#readme",
   "dependencies": {
-    "cypress": "^15.1.0",
+    "@applitools/eyes-cypress": "3.54.4",
+    "cypress": "15.1.0",
     "cypress-multi-reporters": "2.0.5",
+    "eslint": "9.35.0",
+    "husky": "9.1.7",
     "junit-report-merger": "7.0.1",
+    "lint-staged": "16.1.6",
     "mocha-junit-reporter": "2.2.1",
-    "mochawesome": "^7.1.3",
-    "mochawesome-merge": "^5.0.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome": "7.1.3",
+    "mochawesome-merge": "5.0.0",
+    "mochawesome-report-generator": "6.2.0",
+    "prettier": "3.6.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

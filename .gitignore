@@ -1,1 +1,10 @@
 node_modules/
+*.log
+cypress/screenshots/
+cypress/videos/
+cypress/logs
+cypress/reports
+cypress/results
+.history
+.vscode
+.DS_Store

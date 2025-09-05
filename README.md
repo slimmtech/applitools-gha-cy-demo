@@ -1,9 +1,11 @@
-# APPLITOOLS-GHA-CY #
+# APPLITOOLS-GHA-CY
 
-## Description ##
+## Description
+
 Applitools Github Integration Demo (Cypress)
 
 Setup / Prerequisities
+
 1. Install Node Version Manager [nvm](https://github.com/nvm-sh/nvm)
 2. Clone the repo
 3. From root repo directory execute: `nvm use`
@@ -13,7 +15,8 @@ Setup / Prerequisities
 
 Enjoy!
 
-### LICENSE ###
+### LICENSE
+
 (The MIT License)
 
 Copyright (c) M. Millgate
