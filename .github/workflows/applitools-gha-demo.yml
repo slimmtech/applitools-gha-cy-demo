@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version: '22.18.0'
 
       - name: Set local timezone to EST
         run: timedatectl && sudo timedatectl set-timezone EST && timedatectl
