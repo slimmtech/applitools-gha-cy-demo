@@ -14,6 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
       - name: Set local timezone to EST
         run: timedatectl && sudo timedatectl set-timezone EST && timedatectl
 
@@ -23,7 +28,6 @@ jobs:
           APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
         with:
           build: npm install
-          browser: chrome
           command: npm run cy:test
 
       - name: Upload Cypress videos and screenshots

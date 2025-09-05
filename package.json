@@ -9,7 +9,7 @@
     "cy:version": "cypress version",
     "clean:cy:artifacts": "rm -rf cypress/reports cypress/results cypress/screenshots cypress/videos && mkdir cypress/reports cypress/reports/screenshots cypress/reports/videos cypress/results",
     "precy:run": "npm run clean:cy:artifacts",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open",
     "report:json:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/test-results.json",
     "report:xml:merge": "jrm cypress/results/test-results.xml 'cypress/results/xml/*.xml'",
