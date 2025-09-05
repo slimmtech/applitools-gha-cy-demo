@@ -5,7 +5,7 @@ on:
   workflow_dispatch: # manual on demand
     inputs:
       forced_failure:
-        description: 'Set to true to force a visual test failure'
+        description: "Check this box to force a visual test failure"
         type: boolean
         required: false
         default: false
@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: '22.18.0'
+          node-version-file: .nvmrc
 
       - name: Set local timezone to EST
         run: timedatectl && sudo timedatectl set-timezone EST && timedatectl
@@ -33,7 +33,7 @@ jobs:
           APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
           FORCED_FAILURE: ${{ github.event.inputs.forced_failure }}
         with:
-          build: npm install
+          build: npm ci
           command: npm run cy:test
 
       - name: Upload Cypress videos and screenshots
