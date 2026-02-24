@@ -18,7 +18,7 @@ describe("Applitools Demo Test", () => {
     });
 
     // Capture a screenshot for visual comparison
-    cy.eyesCheckWindow("Hello World Page");
+    cy.eyesCheckWindow("Hello World Page2");
 
     // Close the eyes session
     cy.eyesClose();
